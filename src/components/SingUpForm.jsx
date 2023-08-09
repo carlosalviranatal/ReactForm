@@ -8,6 +8,15 @@ export default function SignUpForm({ setToken }) {
   async function handleSubmit(e) {
     await e.preventDefault()
 
+    if (username.length == 0) {
+      alert('Oops! Username cannot be left empty.')
+      return 
+  }
+
+  if (password.length < 6) {
+      alert("Password must be greater or equal to 6 characters.")
+  }
+
     try {
       const response = await fetch(
         'https://fsa-jwt-practice.herokuapp.com/signup',
