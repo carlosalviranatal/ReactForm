@@ -27,12 +27,12 @@ export default function Authenticate({ token }) {
     }
 
     return(
-        <>
+        <div className="container2">
         <h2>Authentication</h2>
         {successMessage && <p>{successMessage}</p>}
         {error && <p>{error}</p>}
         {usernameDisplay && <p>Your username is: <b>{usernameDisplay}</b></p>}
         <button onClick={handleClick}>Authenticate Token</button>
-        </>
+        </div>
     )
 }

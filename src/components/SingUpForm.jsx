@@ -3,6 +3,7 @@ import { useState } from 'react'
 export default function SignUpForm({ setToken }) {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
+  const [signUpMessage, setSignUpMessage] = useState(null)
   const [error, setError] = useState(null)
 
   async function handleSubmit(e) {
@@ -15,6 +16,10 @@ export default function SignUpForm({ setToken }) {
 
   if (password.length < 6) {
       alert("Password must be greater or equal to 6 characters.")
+  }
+  
+  if (username.length < 4) {
+    alert("Username must be greater or equal to 4 characters.")
   }
 
     try {
@@ -30,6 +35,7 @@ export default function SignUpForm({ setToken }) {
       )
       const result = await response.json()
       setToken(result.token)
+      setSignUpMessage(result.message)
       console.log(result)
     } catch (error) {
       console.error(error)
@@ -37,7 +43,7 @@ export default function SignUpForm({ setToken }) {
   }
 
   return (
-    <>
+    <div className='container'>
       <h2>Sign Up</h2>
       {error && <p>{error}</p>}
       <form onSubmit={handleSubmit}>
@@ -51,12 +57,14 @@ export default function SignUpForm({ setToken }) {
         <label>
           Password: {''}{' '}
           <input
+            type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
         </label>
         <button>Submit</button>
       </form>
-    </>
+     {signUpMessage && <p>{signUpMessage}</p>}
+    </div>
   )
 }
