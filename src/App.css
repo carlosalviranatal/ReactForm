@@ -5,3 +5,18 @@
   text-align: center;
 }
 
+.container h2 {
+  font-size: 50px;
+  padding-top: 200px ;
+}
+
+.container form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.container button {
+  align-self: center;
+  margin-top: 10px;
+}
